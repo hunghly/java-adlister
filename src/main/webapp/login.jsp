@@ -16,7 +16,8 @@
 <jsp:include page="partials/navbar.jsp"/>
 <c:choose>
     <c:when test="${(param.username eq 'admin') && (param.password eq 'password')}">
-        <% response.sendRedirect("/profile.jsp"); %>
+<%--        <% response.sendRedirect("/profile.jsp"); %>--%>
+        <c:redirect url="/profile.jsp"/>
     </c:when>
     <c:otherwise>
         <form action="/login.jsp" method="POST" class="login-form">
