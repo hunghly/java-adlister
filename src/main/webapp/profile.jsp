@@ -11,6 +11,6 @@
     <title>Title</title>
 </head>
 <body>
-<h1>Profile here!</h1>
+<h1>Profile is here!</h1>
 </body>
 </html>
