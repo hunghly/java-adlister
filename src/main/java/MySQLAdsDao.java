@@ -22,8 +22,15 @@ public class MySQLAdsDao implements Ads {
         Statement statement = this.connection.createStatement();
         ResultSet rs = statement.executeQuery("SELECT * FROM ads");
         while (rs.next()) {
-
+            returnList.add(new Ad(rs.getLong(1), rs.getLong(2), rs.getString(3), rs.getString(4)));
         }
+
+//        for (Ad ad : returnList) {
+//            System.out.println("id: " + ad.getId());
+//            System.out.println("uid: " + ad.getUserId());
+//            System.out.println("title: " + ad.getTitle());
+//            System.out.println("description: " + ad.getDescription());
+//        }
 
         return returnList;
     }
@@ -37,23 +44,17 @@ public class MySQLAdsDao implements Ads {
         return rs.getLong((1));
     }
 
-    public void generateAds() throws SQLException {
-
-    }
-
-
-
-    public static void main(String[] args) throws SQLException {
-        Ads mySQLDao = DaoFactory.getAdsDao();
-        Ad ps4 = new Ad (1, "old PS4", "An old playstation 4 for sale.");
-        Ad xbox = new Ad (1, "old Xbox", "An old Xbox for sale.");
-        Ad car = new Ad (2, "2018 toyota corolla", "near mint condition vehicle!");
-        Ad backpack = new Ad (2, "army backpack", "selling for cheap!.");
+//    public static void main(String[] args) throws SQLException {
 //        Ads mySQLDao = DaoFactory.getAdsDao();
-        System.out.println(mySQLDao.insert(ps4));
-        mySQLDao.insert(xbox);
-        mySQLDao.insert(car);
-        mySQLDao.insert(backpack);
-        mySQLDao.all();
-    }
+//        Ad ps4 = new Ad (1, "old PS4", "An old playstation 4 for sale.");
+//        Ad xbox = new Ad (1, "old Xbox", "An old Xbox for sale.");
+//        Ad car = new Ad (2, "2018 toyota corolla", "near mint condition vehicle!");
+//        Ad backpack = new Ad (2, "army backpack", "selling for cheap!.");
+////        Ads mySQLDao = DaoFactory.getAdsDao();
+////        mySQLDao.insert(ps4);
+////        mySQLDao.insert(xbox);
+////        mySQLDao.insert(car);
+////        mySQLDao.insert(backpack);
+//        mySQLDao.all();
+//    }
 }
