@@ -79,4 +79,9 @@ public class MySQLAdsDao implements Ads {
         }
         return ads;
     }
+
+    @Override
+    public Connection getConnection() {
+        return this.connection;
+    }
 }

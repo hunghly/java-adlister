@@ -1,11 +1,17 @@
 package com.codeup.adlister.controllers;
 
+import com.codeup.adlister.dao.DaoFactory;
+import com.codeup.adlister.dao.Users;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+import java.sql.Statement;
 
 @WebServlet(name = "controllers.LoginServlet", urlPatterns = "/login")
 public class LoginServlet extends HttpServlet {
@@ -25,6 +31,17 @@ public class LoginServlet extends HttpServlet {
         // TODO: make sure we find a user with that username
         // TODO: check the submitted password against what you have in your database
         boolean validAttempt = false;
+
+
+        Users usersSQLDao = DaoFactory.getUsersDao();
+        try {
+            String sqlQuery = "SELECT * FROM users WHERE user = ?";
+            PreparedStatement stmt = usersSQLDao.getConnection().prepareStatement(sqlQuery, Statement.NO_GENERATED_KEYS);
+            stmt.setString(1, username);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
 
         if (validAttempt) {
             // TODO: store the logged in user object in the session, instead of just the username

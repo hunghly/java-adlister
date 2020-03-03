@@ -52,11 +52,16 @@ public class MySQLUsersDao implements Users {
         return rs.getLong(1);
     }
 
-    public static void main(String[] args) throws SQLException {
-        Users userDAO = DaoFactory.getUsersDao();
-        User hunghly = userDAO.findByUsername("dude");
-        System.out.println(hunghly.getUsername());
-        User dude3 = new User("dude3", "dude3@email.com", "password3");
-        System.out.println(userDAO.insert(dude3));
+    @Override
+    public Connection getConnection() {
+        return this.connection;
     }
+
+    //    public static void main(String[] args) throws SQLException {
+//        Users userDAO = DaoFactory.getUsersDao();
+//        User hunghly = userDAO.findByUsername("dude");
+//        System.out.println(hunghly.getUsername());
+//        User dude3 = new User("dude3", "dude3@email.com", "password3");
+//        System.out.println(userDAO.insert(dude3));
+//    }
 }
