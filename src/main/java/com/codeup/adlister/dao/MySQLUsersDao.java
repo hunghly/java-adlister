@@ -30,7 +30,7 @@ public class MySQLUsersDao implements Users {
         stmt.execute();
         ResultSet rs = stmt.getResultSet();
         while (rs.next()) {
-            Long id = rs.getLong(1);
+            long id = rs.getLong(1);
             String uName = rs.getString(2);
             String email = rs.getString(3);
             String password = rs.getString(4);
